@@ -264,7 +264,7 @@ function TabClientes({ clientes, reload, flash, loading }) {
                 <div className="modal-overlay">
                     <div className="modal-card modal-wide">
                         <div className="modal-header">
-                            <h3>{edit ? '✏️ Editar Cliente' : '➕ Nuevo Cliente'}</h3>
+                            <h3>{edit ? '📝 Editar Cliente' : '➕ Nuevo Cliente'}</h3>
                             <button className="close-btn" onClick={cerrar}>&times;</button>
                         </div>
                         <form onSubmit={guardar} className="modal-form">
