@@ -406,7 +406,7 @@ function TabPaquetes({ paquetes, destinos, reload, flash, loading }) {
         if (!destino) { flash('err', 'Selecciona un destino que deseas.'); return; }
         const data = { nombre_paquete: nombre, precio: parseFloat(precio), duracion_dias: parseInt(dias), destino };
         try {
-            if (edit) { await actualizarPaquete(selId, data); flash('ok', 'Paquete actualizado ✓'); }
+            if (edit) { await actualizarPaquete(selId, data); flash('ok', 'El Paquete ha sido actualizado correctamente ✓'); }
             else       { await crearPaquete(data);             flash('ok', 'Paquete creado ✓'); }
             cerrar(); reload();
         } catch (err) {
