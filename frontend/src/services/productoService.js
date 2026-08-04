@@ -1,3 +1,4 @@
+// CREAR SERVICIO DE PRODUCTO, CON FUNCIONES PARA OBTENER, CREAR, ACTUALIZAR Y ELIMINAR PRODUCTOS.
 import api from './api';
 
 export const obtenerProductos = async () => {
