@@ -1,6 +1,5 @@
 from django.db import models
 from reservas.models import Reserva
-
 # Creamos el modelo de pago
 class Pago(models.Model):
     fecha_pago = models.DateField()
