@@ -374,8 +374,8 @@ function TabDestinos({ destinos, reload, flash, loading }) {
                             </div>
                             <Field label="Descripción"><textarea className="custom-textarea" value={descripcion} onChange={e=>setDescripcion(e.target.value)} rows={3} placeholder="Breve descripción del destino…" /></Field>
                             <div className="modal-actions">
-                                <button type="button" className="btn-secondary" onClick={cerrar}>Cancelar</button>
-                                <button type="submit" className="btn-primary">{edit ? 'Actualizar' : 'Guardar'}</button>
+                                <button type="button" className="btn-secondary" onClick={cerrar}>❌ Cancelar</button>
+                                <button type="submit" className="btn-primary">{edit ? '✅ Actualizar' : '💾 Guardar'}</button>
                             </div>
                         </form>
                     </div>
