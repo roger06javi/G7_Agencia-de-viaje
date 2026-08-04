@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'destino_page.dart';
 import 'cliente_page.dart';
+import 'paquete_page.dart';
+import 'reserva_page.dart';
+import 'pago_page.dart';
+import 'guia_page.dart';
+import 'categoria_page.dart';
 
 class DashboardPage extends StatelessWidget {
   final String username;
@@ -163,7 +168,7 @@ class DashboardPage extends StatelessWidget {
                 Expanded(
                   child: _miniCard(
                     "Servicios",
-                    "4",
+                    "7",
                     Icons.apps,
                     Colors.cyan,
                   ),
@@ -213,6 +218,98 @@ class DashboardPage extends StatelessWidget {
                       );
                     },
                   ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 15),
+
+            Row(
+              children: [
+                Expanded(
+                  child: _actionCard(
+                    "Paquetes",
+                    Icons.backpack,
+                    const Color(0xff10b981),
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const PaquetePage()),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(width: 15),
+                Expanded(
+                  child: _actionCard(
+                    "Reservas",
+                    Icons.calendar_today,
+                    const Color(0xff8b5cf6),
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const ReservaPage()),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 15),
+
+            Row(
+              children: [
+                Expanded(
+                  child: _actionCard(
+                    "Pagos",
+                    Icons.payment,
+                    const Color(0xffec4899),
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const PagoPage()),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(width: 15),
+                Expanded(
+                  child: _actionCard(
+                    "Guías",
+                    Icons.person_outline,
+                    const Color(0xff06b6d4),
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const GuiaPage()),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 15),
+
+            Row(
+              children: [
+                Expanded(
+                  child: _actionCard(
+                    "Categorías",
+                    Icons.category,
+                    const Color(0xfff59e0b),
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const CategoriaPage()),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(width: 15),
+                Expanded(
+                  child: Container(),
                 ),
               ],
             ),
