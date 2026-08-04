@@ -87,7 +87,7 @@ function Login() {
                     </div>
 
                     <button type="submit" className="btn-primary" disabled={isLoading}>
-                        {isLoading ? 'Iniciando sesión...' : '🔑 Iniciar Sesión'}
+                        {isLoading ? 'Iniciando sesión...' : '🔑 Iniciar Sesión'} // Ubicar señales amigables para el sistema en el login. jsx
                     </button>
                 </form>
             </div>
