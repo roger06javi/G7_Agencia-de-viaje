@@ -519,9 +519,9 @@ function TabReservas({ reservas, clientes, paquetes, reload, flash, loading }) {
     };
 
     const eliminar = async (id) => {
-        if (!window.confirm('¿Eliminar esta reserva?')) return;
-        try { await eliminarReserva(id); flash('ok', 'Reserva eliminada ✓'); reload(); }
-        catch { flash('err', 'No se pudo eliminar la reserva.'); }
+        if (!window.confirm('¿Esta seguro que quieres eliminar esta reserva?')) return;
+        try { await eliminarReserva(id); flash('ok', 'La reserva ha sido eliminada ✓'); reload(); }
+        catch { flash('err', 'No se ha podido eliminar la reserva por favor intente de nuevo.'); }
     };
 
     const pillClass = (e) => e === 'Confirmada' ? 'confirmada' : e === 'Cancelada' ? 'cancelada' : 'pendiente';
