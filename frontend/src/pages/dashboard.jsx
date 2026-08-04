@@ -232,7 +232,7 @@ function TabClientes({ clientes, reload, flash, loading }) {
     return (
         <div>
             <div className="page-header">
-                <div><h1>Clientes 👥</h1><p className="page-sub">Gestión de clientes registrados.</p></div>
+                <div><h1>Clientes 🧑‍🤝‍🧑</h1><p className="page-sub">Gestión de clientes registrados.</p></div>
                 <button className="btn-primary" onClick={abrir}>➕ Nuevo Cliente</button>
             </div>
             <input className="search-input" placeholder="🔍 Buscar por nombre, cédula o correo…" value={busq} onChange={e => setBusq(e.target.value)} />
