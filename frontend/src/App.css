@@ -240,7 +240,7 @@ body {
   font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
   background: rgba(0,0,0,.2); white-space: nowrap;
 }
-.custom-table td { padding: 13px 16px; border-bottom: 1px solid rgba(255,255,255,.04); color: #cbd5e1; font-size: 14px; }
+.custom-table td { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,.04); color: #cbd5e1; font-size: 15px; }
 .custom-table tr:last-child td { border-bottom: none; }
 .custom-table tr:hover td { background: rgba(99,102,241,.04); }
 
