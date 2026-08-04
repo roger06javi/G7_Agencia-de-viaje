@@ -19,7 +19,7 @@ export const actualizarReserva = async (id, data) => {
     return res.data;
 };
 
-// Eliminar reserva
+// Eliminar una reserva existente, incluyendo información del cliente y del paquete turístico
 export const eliminarReserva = async (id) => {
     await api.delete(`reservas/${id}/`);
 };
