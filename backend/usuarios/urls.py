@@ -1,3 +1,4 @@
+# Crear las rutas para el modelo de usuario, con endpoints para listar, crear, actualizar y eliminar usuarios, así como para obtener y refrescar tokens de autenticación.
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import (
