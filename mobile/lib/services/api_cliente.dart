@@ -2,8 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../models/model_cliente.dart';
-
-const String baseUrl = 'http://10.0.2.2:8000/api/';
+import 'api_config.dart';
 
 Future<List<Cliente>> listarClientes() async {
   final response = await http.get(Uri.parse('${baseUrl}clientes/clientes/'));
