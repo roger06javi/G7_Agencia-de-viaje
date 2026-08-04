@@ -1,4 +1,5 @@
 # CREAR MODELO DE PRODUCTO, CON FK PARA MEJOR RELACIÓN CON CATEGORÍA.
+# Hacer migraciones y migrar para crear la tabla en la base de datos.
 from django.db import models
 from categoria.models import Categoria
 
