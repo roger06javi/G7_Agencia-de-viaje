@@ -7,7 +7,7 @@ export const obtenerReservas = async () => {
     return res.data;
 };
 
-// Crear una nueva reserva
+// Crear una nueva reserva, incluyendo información del cliente y del paquete turístico
 export const crearReserva = async (data) => {
     const res = await api.post('reservas/', data);
     return res.data;
