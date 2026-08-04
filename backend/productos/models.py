@@ -1,3 +1,4 @@
+# CREAR MODELO DE PRODUCTO, CON FK PARA MEJOR RELACIÓN CON CATEGORÍA.
 from django.db import models
 from categoria.models import Categoria
 
