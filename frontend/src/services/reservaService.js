@@ -1,7 +1,7 @@
 // Servicio para manejar las reservas en el frontend, utilizando la API del backend.
 import api from './api';
 
-// Obtener todas las reservas
+// Obtener todas las reservas, incluyendo información del cliente y del paquete turístico
 export const obtenerReservas = async () => {
     const res = await api.get('reservas/');
     return res.data;
