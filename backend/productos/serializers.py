@@ -1,3 +1,4 @@
+# CREAR SERIALIZADOR DE PRODUCTO.
 from rest_framework import serializers
 from .models import Producto
 
