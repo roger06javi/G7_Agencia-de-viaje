@@ -487,7 +487,7 @@ function TabPaquetes({ paquetes, destinos, reload, flash, loading }) {
     );
 }
 
-/* ── TAB RESERVAS ───────────────────────────────────────── */
+/* ── TAB RESERVAS ───────────────────────────────────────── */ // Revisar el tab de reservas, ya que no se está mostrando correctamente la información de cliente y paquete. Asegurarse de que los datos estén siendo pasados correctamente desde el backend y que los nombres de las propiedades coincidan con los utilizados en el frontend.
 function TabReservas({ reservas, clientes, paquetes, reload, flash, loading }) {
     const [busq, setBusq]       = useState('');
     const [modal, setModal]     = useState(false);
