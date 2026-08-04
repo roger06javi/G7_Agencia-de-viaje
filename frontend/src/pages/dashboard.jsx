@@ -763,7 +763,7 @@ function TabGuias({ guias, destinos, reload, flash, loading }) {
                 <div><h1>Guías Turísticos 👨‍💼</h1><p className="page-sub">Gestión de guías asignados por destino.</p></div>
                 <button className="btn-primary" onClick={abrir}>➕ Nuevo Guía</button>
             </div>
-            <input className="search-input" placeholder="🔍 Buscar por nombre, destino o experiencia…" value={busq} onChange={e => setBusq(e.target.value)} />
+            <input className="search-input" placeholder="🔍 Deseas buscar por nombre, destino o experiencia…" value={busq} onChange={e => setBusq(e.target.value)} />
             <div className="table-card">
                 {loading ? <Spinner /> : filtrados.length === 0 ? <Empty texto={busq ? 'Sin resultados.' : 'No hay guías registrados.'} /> : (
                     <div className="table-responsive">
