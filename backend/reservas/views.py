@@ -1,3 +1,4 @@
+# Crear vista de reserva, con permisos de autenticación y ordenamiento por id descendente.
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from .models import Reserva
