@@ -1,4 +1,5 @@
 # Crear modelo de reserva, con campos de fecha, cantidad de personas, estado, cliente y paquete turístico.
+# Hacer migraciones y migrar para crear la tabla en la base de datos.
 from django.db import models
 from clientes.models import Cliente
 from paquetes.models import PaqueteTuristico
