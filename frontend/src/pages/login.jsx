@@ -49,7 +49,7 @@ function Login() {
         <div className="login-container">   
             <div className="login-card">
                 <div className="login-header">
-                    <div className="avatar-icon">🔐</div>
+                    <div className="avatar-icon">�</div>
                     <h2>Iniciar Sesión</h2>
                     <p>Ingrese sus credenciales para acceder a la plataforma</p>
                 </div>
