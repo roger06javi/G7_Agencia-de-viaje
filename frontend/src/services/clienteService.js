@@ -13,7 +13,7 @@ export const crearCliente = async (data) => {
     return res.data;
 };
 
-// Actualizar cliente existente
+// Actualizar un cliente existente.
 export const actualizarCliente = async (id, data) => {
     const res = await api.put(`clientes/clientes/${id}/`, data);
     return res.data;
