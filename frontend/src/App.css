@@ -39,7 +39,7 @@ body {
   border: 1px solid rgba(99,102,241,.4); width: 80px; height: 80px;
   border-radius: 50%; margin-bottom: 16px;
 }
-.login-header h2 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.login-header h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 6px; }
 .login-header p  { color: #64748b; font-size: 14px; }
 
 /* ── FORM ELEMENTS ─────────────────────────────────────── */
