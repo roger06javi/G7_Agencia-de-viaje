@@ -309,8 +309,8 @@ function TabDestinos({ destinos, reload, flash, loading }) {
         e.preventDefault();
         const data = { nombre_destino: nombre, pais, ciudad, descripcion };
         try {
-            if (edit) { await actualizarDestino(selId, data); flash('ok', 'Destino actualizado ✓'); }
-            else       { await crearDestino(data);             flash('ok', 'Destino creado ✓'); }
+            if (edit) { await actualizarDestino(selId, data); flash('ok', 'El Destino ha sido actualizado ✓'); }
+            else       { await crearDestino(data);             flash('ok', 'El Destino ha sido creado ✓'); }
             cerrar(); reload();
         } catch (err) {
             const msg = err.response?.data ? Object.values(err.response.data).flat()[0] : 'Error al guardar.';
