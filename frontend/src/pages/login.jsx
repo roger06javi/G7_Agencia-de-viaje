@@ -35,8 +35,13 @@ function Login() {
             navigate('/dashboard');
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
-            if (error.response && error.response.data && error.response.data.detail) {
-                setErrorMsg(error.response.data.detail);
+            const detalle = error.response?.data?.detail;
+            if (detalle) {
+                if (detalle === 'No active account found with the given credentials') {
+                    setErrorMsg('No se encontró una cuenta activa con las credenciales proporcionadas.');
+                } else {
+                    setErrorMsg(detalle);
+                }
             } else {
                 setErrorMsg('Usuario o contraseña incorrectos. Intente nuevamente.');
             }
