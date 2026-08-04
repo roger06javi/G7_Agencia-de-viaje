@@ -141,7 +141,7 @@ function TabInicio({ clientes, destinos, paquetes, reservas, pagos, guias, switc
         { label: 'Guías',     value: guias.length,     icon: '👨‍💼', color: '#f472b6', tab: 'guias'    },
     ];
     const accesos = [
-        { tab:'clientes', icon:'👥', title:'Clientes',          desc:'Gestiona el registro de clientes.' },
+        { tab:'clientes', icon:'👥', title:'Clientes',          desc:'Gestiona el registro de nuestros clientes de esta agencia.' },
         { tab:'destinos', icon:'📍', title:'Destinos',           desc:'Administra los destinos turísticos.' },
         { tab:'paquetes', icon:'🎒', title:'Paquetes Turísticos',desc:'Paquetes vinculados a destinos.' },
         { tab:'reservas', icon:'📅', title:'Reservas',           desc:'Control de reservas y estados.' },
