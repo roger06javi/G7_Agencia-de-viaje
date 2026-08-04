@@ -34,9 +34,9 @@ body {
 
 .login-header { text-align: center; margin-bottom: 32px; }
 .avatar-icon {
-  font-size: 44px; display: inline-flex; align-items: center; justify-content: center;
+  font-size: 48px; display: inline-flex; align-items: center; justify-content: center;
   background: linear-gradient(135deg,rgba(99,102,241,.25),rgba(168,85,247,.25));
-  border: 1px solid rgba(99,102,241,.4); width: 80px; height: 80px;
+  border: 1px solid rgba(99,102,241,.4); width: 85px; height: 85px;
   border-radius: 50%; margin-bottom: 16px;
 }
 .login-header h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 6px; }
