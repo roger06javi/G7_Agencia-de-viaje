@@ -331,7 +331,7 @@ function TabDestinos({ destinos, reload, flash, loading }) {
     return (
         <div>
             <div className="page-header">
-                <div><h1>Destinos 📍</h1><p className="page-sub">Administra los destinos turísticos disponibles.</p></div>
+                <div><h1>Destinos 🌍</h1><p className="page-sub">Administra los destinos turísticos disponibles.</p></div>
                 <button className="btn-primary" onClick={abrir}>➕ Nuevo Destino</button>
             </div>
             <input className="search-input" placeholder="🔍 Buscar por nombre, ciudad o país…" value={busq} onChange={e => setBusq(e.target.value)} />
