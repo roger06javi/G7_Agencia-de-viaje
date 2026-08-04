@@ -273,7 +273,7 @@ function TabClientes({ clientes, reload, flash, loading }) {
                                 <Field label="Apellido" required><input type="text" value={apellido} onChange={e=>setApellido(e.target.value)} placeholder="Apellido" required /></Field>
                             </div>
                             <div className="form-row">
-                                <Field label="Cédula" required><input type="text" value={cedula} onChange={e=>setCedula(e.target.value)} placeholder="123456789" required /></Field>
+                                <Field label="Cédula o Identificación" required><input type="text" value={cedula} onChange={e=>setCedula(e.target.value)} placeholder="123456789" required /></Field>
                                 <Field label="Teléfono"><input type="text" value={telefono} onChange={e=>setTelefono(e.target.value)} placeholder="+57 300 000 0000" /></Field>
                             </div>
                             <Field label="Correo Electrónico" required><input type="email" value={correo} onChange={e=>setCorreo(e.target.value)} placeholder="correo@ejemplo.com" required /></Field>
