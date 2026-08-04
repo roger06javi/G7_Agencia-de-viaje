@@ -1,3 +1,4 @@
+# CREAR ADMIN DE PRODUCTO, CON LISTA DE PRODUCTOS, FILTROS Y BÚSQUEDA.
 from django.contrib import admin
 from .models import Producto
 
