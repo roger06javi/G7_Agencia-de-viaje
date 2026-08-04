@@ -78,24 +78,25 @@ export default function Dashboard() {
 
     return (
         <div className="app-shell">
-            <aside className={`sidebar ${sidebarOpen ? '' : 'collapsed'}`}>
+            <div className={`sidebar-overlay ${sidebarOpen ? 'active' : ''}`} onClick={() => setSidebarOpen(false)}></div>
+            <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
                 <div className="sidebar-brand">
                     <span className="brand-icon">✈️</span>
-                    {sidebarOpen && <span className="brand-text">Agencia Viajes</span>}
+                    <span className="brand-text">Agencia Viajes</span>
                 </div>
                 <nav className="sidebar-nav">
                     {TABS.map(t => (
-                        <button key={t.key} className={`nav-item ${currentTab === t.key ? 'active' : ''}`} onClick={() => switchTab(t.key)} title={t.label}>
+                        <button key={t.key} className={`nav-item ${currentTab === t.key ? 'active' : ''}`} onClick={() => { switchTab(t.key); setSidebarOpen(false); }} title={t.label}>
                             <span className="nav-icon">{t.icon}</span>
-                            {sidebarOpen && <span className="nav-label">{t.label}</span>}
+                            <span className="nav-label">{t.label}</span>
                         </button>
                     ))}
                 </nav>
                 <div className="sidebar-footer">
-                    {sidebarOpen && <span className="sidebar-user">👤 {user}</span>}
+                    <span className="sidebar-user">👤 {user}</span>
                     <button className="nav-item logout-btn" onClick={handleLogout} title="Salir">
                         <span className="nav-icon">🚪</span>
-                        {sidebarOpen && <span className="nav-label">Cerrar Sesión</span>}
+                        <span className="nav-label">Cerrar Sesión</span>
                     </button>
                 </div>
             </aside>
