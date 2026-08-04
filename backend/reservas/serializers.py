@@ -1,3 +1,4 @@
+# Crear serializer para el modelo de reserva, con campos de fecha, cantidad de personas, estado, cliente y paquete turístico.
 from rest_framework import serializers
 from .models import Reserva
 
