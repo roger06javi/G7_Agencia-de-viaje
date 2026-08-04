@@ -235,7 +235,7 @@ function TabClientes({ clientes, reload, flash, loading }) {
                 <div><h1>Clientes 🧑‍🤝‍🧑</h1><p className="page-sub">Gestión de clientes registrados.</p></div>
                 <button className="btn-primary" onClick={abrir}>➕ Nuevo Cliente</button>
             </div>
-            <input className="search-input" placeholder="🔍 Buscar por nombre, cédula o correo…" value={busq} onChange={e => setBusq(e.target.value)} />
+            <input className="search-input" placeholder="� Buscar por nombre, cédula o correo…" value={busq} onChange={e => setBusq(e.target.value)} />
             <div className="table-card">
                 {loading ? <Spinner /> : filtrados.length === 0 ? <Empty texto={busq ? 'Sin resultados.' : 'No hay clientes aún.'} /> : (
                     <div className="table-responsive">
