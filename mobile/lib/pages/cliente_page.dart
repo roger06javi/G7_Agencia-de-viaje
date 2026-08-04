@@ -62,13 +62,13 @@ class _ClientePageState extends State<ClientePage> {
               return ListTile(
                 leading: const Icon(Icons.person),
                 title: Text(
-                  '${cliente.nombre} ${cliente.apellido}',
+                  '${cliente.nombre ?? ''} ${cliente.apellido ?? ''}'.trim(),
                 ),
                 subtitle: Text(
-                  cliente.email ?? 'Sin correo',
+                  '${cliente.correo ?? 'Sin correo'}\nCédula: ${cliente.cedula ?? '-'}',
                 ),
                 trailing: Text(
-                  cliente.estado ?? '',
+                  cliente.telefono ?? '',
                 ),
               );
             },
