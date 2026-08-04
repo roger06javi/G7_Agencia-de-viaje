@@ -1,3 +1,4 @@
+# Crear modelo de reserva, con campos de fecha, cantidad de personas, estado, cliente y paquete turístico.
 from django.db import models
 from clientes.models import Cliente
 from paquetes.models import PaqueteTuristico
