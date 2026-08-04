@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from .models import Reserva
 from .serializers import ReservaSerializer
-# Creamos la vista de reserva asa
+# Creamos la vista de reserva asa asd
 class ReservaViewSet(viewsets.ModelViewSet):
     queryset = Reserva.objects.all().order_by('-id')
     serializer_class = ReservaSerializer
