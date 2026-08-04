@@ -104,7 +104,7 @@ body {
 .btn-secondary:hover { background: rgba(255,255,255,.1); color: #f1f5f9; transform: translateY(-1px); }
 
 .btn-action {
-  padding: 5px 11px; border-radius: 7px; font-size: 12px; font-weight: 600;
+  padding: 6px 12px; border-radius: 7px; font-size: 13px; font-weight: 600;
   cursor: pointer; border: none; transition: all .18s; white-space: nowrap;
 }
 .btn-action.edit   { background: rgba(245,158,11,.12); color: #fbbf24; border: 1px solid rgba(245,158,11,.3); }
