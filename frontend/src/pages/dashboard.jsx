@@ -278,7 +278,7 @@ function TabClientes({ clientes, reload, flash, loading }) {
                             </div>
                             <Field label="Correo Electrónico" required><input type="email" value={correo} onChange={e=>setCorreo(e.target.value)} placeholder="correo@ejemplo.com" required /></Field>
                             <div className="modal-actions">
-                                <button type="button" className="btn-secondary" onClick={cerrar}>Cancelar</button>
+                                <button type="button" className="btn-secondary" onClick={cerrar}>❌ Cancelar</button>
                                 <button type="submit" className="btn-primary">{edit ? 'Actualizar' : 'Guardar'}</button>
                             </div>
                         </form>
