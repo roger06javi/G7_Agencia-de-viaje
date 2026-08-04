@@ -19,7 +19,7 @@ export const actualizarCliente = async (id, data) => {
     return res.data;
 };
 
-// Eliminar cliente
+// Eliminar un cliente existente por su ID.
 export const eliminarCliente = async (id) => {
     await api.delete(`clientes/clientes/${id}/`);
 };
