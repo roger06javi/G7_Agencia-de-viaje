@@ -9,8 +9,8 @@ import { obtenerGuias, crearGuia, actualizarGuia, eliminarGuia } from '../servic
 
 const TABS = [
     { key: 'inicio',    icon: '🏠', label: 'Inicio' },
-    { key: 'clientes',  icon: '👥', label: 'Clientes' },
-    { key: 'destinos',  icon: '📍', label: 'Destinos' },
+    { key: 'clientes',  icon: '🧑‍🤝‍🧑', label: 'Clientes' },
+    { key: 'destinos',  icon: '🌍', label: 'Destinos' },
     { key: 'paquetes',  icon: '🎒', label: 'Paquetes' },
     { key: 'reservas',  icon: '📅', label: 'Reservas' },
     { key: 'pagos',     icon: '💳', label: 'Pagos' },
