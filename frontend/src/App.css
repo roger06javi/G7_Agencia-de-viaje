@@ -87,7 +87,7 @@ body {
 /* ── BUTTONS ───────────────────────────────────────────── */
 .btn-primary {
   background: linear-gradient(135deg,#6366f1 0%,#4f46e5 100%);
-  color: #fff; font-weight: 600; font-size: 14px; padding: 11px 22px;
+  color: #fff; font-weight: 600; font-size: 15px; padding: 12px 24px;
   border: none; border-radius: 10px; cursor: pointer; transition: all .2s; white-space: nowrap;
 }
 .btn-primary:hover:not(:disabled) {
