@@ -410,7 +410,7 @@ function TabPaquetes({ paquetes, destinos, reload, flash, loading }) {
             else       { await crearPaquete(data);             flash('ok', 'El Paquete ha sido creado correctamente ✓'); }
             cerrar(); reload();
         } catch (err) {
-            const msg = err.response?.data ? Object.values(err.response.data).flat()[0] : 'Error al guardar.';
+            const msg = err.response?.data ? Object.values(err.response.data).flat()[0] : 'Hubo un error al guardar intente de nuevo.';
             flash('err', String(msg));
         }
     };
