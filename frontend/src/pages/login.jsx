@@ -82,7 +82,7 @@ function Login() {
                     </div>
 
                     <button type="submit" className="btn-primary" disabled={isLoading}>
-                        {isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
+                        {isLoading ? 'Iniciando sesión...' : '🔑 Iniciar Sesión'}
                     </button>
                 </form>
             </div>
