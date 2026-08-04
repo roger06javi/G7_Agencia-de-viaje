@@ -38,7 +38,7 @@ function Login() {
             const detalle = error.response?.data?.detail;
             if (detalle) {
                 if (detalle === 'No active account found with the given credentials') {
-                    setErrorMsg('No se encontró una cuenta activa con las credenciales proporcionadas.');
+                    setErrorMsg('No se encontró una cuenta activa con las credenciales proporcionadas.'); // Mensaje de error más amigable para el usuario.
                 } else {
                     setErrorMsg(detalle);
                 }
