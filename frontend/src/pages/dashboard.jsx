@@ -750,7 +750,7 @@ function TabGuias({ guias, destinos, reload, flash, loading }) {
     const eliminar = async (id, nombre) => {
         if (!window.confirm(`¿Estas seguro que deseas eliminar al guía "${nombre}"?`)) return;
         try { await eliminarGuia(id); flash('ok', 'El Guía ha sido eliminado ✓'); reload(); }
-        catch { flash('err', 'No se pudo eliminar el guía.'); }
+        catch { flash('err', 'No se ha  podido eliminar el guía por favor intentalo de nuevo.'); }
     };
 
     const filtrados = guias.filter(g =>
