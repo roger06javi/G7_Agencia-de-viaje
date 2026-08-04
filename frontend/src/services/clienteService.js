@@ -1,3 +1,4 @@
+// Crear un servicio para manejar las operaciones CRUD de clientes, utilizando la API RESTful del backend.
 import api from './api';
 
 // Obtener todos los clientes
