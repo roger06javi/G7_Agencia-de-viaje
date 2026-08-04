@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
@@ -5,26 +6,38 @@ import '../models/model_destino.dart';
 import 'api_config.dart';
 
 Future<List<Destino>> listarDestinos() async {
-  final response = await http.get(Uri.parse('${baseUrl}destinos/'));
+  try {
+    final response = await http
+        .get(Uri.parse('${baseUrl}destinos/'))
+        .timeout(const Duration(seconds: 10));
 
-  if (response.statusCode == 200) {
-    List<dynamic> body = jsonDecode(response.body);
-    return body.map((item) => Destino.fromJson(item)).toList();
-  } else {
-    throw Exception('Fallo al cargar los destinos: ${response.statusCode}');
+    if (response.statusCode == 200) {
+      List<dynamic> body = jsonDecode(response.body);
+      return body.map((item) => Destino.fromJson(item)).toList();
+    } else {
+      throw Exception('Fallo al cargar los destinos: ${response.statusCode}');
+    }
+  } on TimeoutException {
+    throw Exception('Tiempo de espera agotado al cargar destinos');
   }
 }
 
 Future<Destino> crearDestino(Destino destino) async {
-  final response = await http.post(
-    Uri.parse('${baseUrl}destinos/'),
-    headers: {'Content-Type': 'application/json'},
-    body: jsonEncode(destino.toJson()),
-  );
+  try {
+    final response = await http
+        .post(
+          Uri.parse('${baseUrl}destinos/'),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode(destino.toJson()),
+        )
+        .timeout(const Duration(seconds: 10));
 
-  if (response.statusCode == 201) {
-    return Destino.fromJson(jsonDecode(response.body));
-  } else {
-    throw Exception('Fallo al crear el destino: ${response.statusCode}');
+    if (response.statusCode == 201) {
+      return Destino.fromJson(jsonDecode(response.body));
+    } else {
+      throw Exception('Fallo al crear el destino: ${response.statusCode}');
+    }
+  } on TimeoutException {
+    throw Exception('Tiempo de espera agotado al crear destino');
   }
 }

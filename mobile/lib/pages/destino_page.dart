@@ -60,7 +60,14 @@ class _DestinoPageState extends State<DestinoPage> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                 child: ListTile(
                   title: Text(destino.nombreDestino ?? 'Sin nombre', style: const TextStyle(color: Colors.white)),
-                  subtitle: Text('${destino.ciudad ?? '-'} · ${destino.pais ?? '-'}\n${destino.descripcion ?? ''}', style: const TextStyle(color: Colors.white70)),
+                  subtitle: Text(
+                    '${destino.ciudad ?? '-'}, ${destino.pais ?? '-'}\n${destino.descripcion ?? 'Sin descripción'}',
+                    style: const TextStyle(color: Colors.white70),
+                  ),
+                  trailing: Text(
+                    destino.id != null ? 'ID ${destino.id}' : '',
+                    style: const TextStyle(color: Colors.white60, fontSize: 12),
+                  ),
                 ),
               );
             },
@@ -68,12 +75,21 @@ class _DestinoPageState extends State<DestinoPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: 'Agregar destino',
+        backgroundColor: const Color(0xff6366f1),
         onPressed: () async {
           final result = await showDialog<bool>(
             context: context,
             builder: (_) => const _DestinoDialog(),
           );
-          if (result == true) refresh();
+          if (result == true) {
+            await refresh();
+            if (mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Destino guardado correctamente')),
+              );
+            }
+          }
         },
         child: const Icon(Icons.add),
       ),
@@ -97,6 +113,11 @@ class _DestinoDialogState extends State<_DestinoDialog> {
 
   Future<void> guardar() async {
     if (nombreController.text.isEmpty || paisController.text.isEmpty || ciudadController.text.isEmpty) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Por favor completa nombre, país y ciudad.')),
+        );
+      }
       return;
     }
     setState(() => loading = true);

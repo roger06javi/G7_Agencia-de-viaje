@@ -86,7 +86,14 @@ class _ClientePageState extends State<ClientePage> {
             context: context,
             builder: (_) => const _ClienteDialog(),
           );
-          if (created == true) refresh();
+          if (created == true) {
+            await refresh();
+            if (mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Cliente guardado correctamente')),
+              );
+            }
+          }
         },
         backgroundColor: const Color(0xfff97316),
         child: const Icon(Icons.person_add),
@@ -122,6 +129,11 @@ class _ClienteDialogState extends State<_ClienteDialog> {
 
   Future<void> guardar() async {
     if (nombreController.text.isEmpty || apellidoController.text.isEmpty || cedulaController.text.isEmpty) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Por favor completa nombre, apellido y cédula.')),
+        );
+      }
       return;
     }
     setState(() => loading = true);
