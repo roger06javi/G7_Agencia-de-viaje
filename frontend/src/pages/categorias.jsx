@@ -8,6 +8,7 @@ import {
     eliminarCategoria 
 } from '../services/categoriaService';
 
+// Crear funcion para categorias en .jsx
 function Categorias() {
     const navigate = useNavigate();
     const [user, setUser] = useState('');
