@@ -638,9 +638,9 @@ function TabPagos({ pagos, reservas, reload, flash, loading }) {
     };
 
     const eliminar = async (id) => {
-        if (!window.confirm('¿Eliminar este pago?')) return;
+        if (!window.confirm('¿Estas seguro que quieres eliminar este pago?')) return;
         try { await eliminarPago(id); flash('ok', 'Pago eliminado ✓'); reload(); }
-        catch { flash('err', 'No se pudo eliminar el pago.'); }
+        catch { flash('err', 'No se ha podido eliminar el pago por favor intente de nuevo.'); }
     };
 
     const metodoBadge = (m) => m === 'Efectivo' ? 'badge-green' : m === 'Tarjeta' ? 'badge-blue' : 'badge-cat';
