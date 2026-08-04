@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
+import 'destino_page.dart';
+import 'cliente_page.dart';
 
 class DashboardPage extends StatelessWidget {
   final String username;
@@ -183,6 +185,40 @@ class DashboardPage extends StatelessWidget {
 
             const SizedBox(height: 25),
 
+            Row(
+              children: [
+                Expanded(
+                  child: _actionCard(
+                    "Ver destinos",
+                    Icons.place,
+                    const Color(0xff6366f1),
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const DestinoPage()),
+                      );
+                    },
+                  ),
+                ),
+                const SizedBox(width: 15),
+                Expanded(
+                  child: _actionCard(
+                    "Clientes",
+                    Icons.person,
+                    const Color(0xfff97316),
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const ClientePage()),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 25),
+
             _dashboardCard(
               Icons.api,
               "API REST",
@@ -305,6 +341,33 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
+  Widget _actionCard(
+      String title,
+      IconData icon,
+      Color color,
+      VoidCallback onTap,
+      ) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 110,
+        decoration: BoxDecoration(
+          color: const Color(0xff1E293B),
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: Colors.white10),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: color, size: 30),
+            const SizedBox(height: 12),
+            Text(title, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _dashboardCard(
       IconData icon,
       String title,
@@ -327,7 +390,7 @@ class DashboardPage extends StatelessWidget {
             width: 55,
             height: 55,
             decoration: BoxDecoration(
-              color: color.withOpacity(.15),
+              color: color.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(14),
             ),
             child: Icon(
