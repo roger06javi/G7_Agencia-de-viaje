@@ -407,7 +407,7 @@ function TabPaquetes({ paquetes, destinos, reload, flash, loading }) {
         const data = { nombre_paquete: nombre, precio: parseFloat(precio), duracion_dias: parseInt(dias), destino };
         try {
             if (edit) { await actualizarPaquete(selId, data); flash('ok', 'El Paquete ha sido actualizado correctamente ✓'); }
-            else       { await crearPaquete(data);             flash('ok', 'Paquete creado ✓'); }
+            else       { await crearPaquete(data);             flash('ok', 'El Paquete ha sido creado correctamente ✓'); }
             cerrar(); reload();
         } catch (err) {
             const msg = err.response?.data ? Object.values(err.response.data).flat()[0] : 'Error al guardar.';
