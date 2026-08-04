@@ -1,7 +1,7 @@
 // Crear un servicio para manejar las operaciones CRUD de clientes, utilizando la API RESTful del backend.
 import api from './api';
 
-// Obtener todos los clientes
+// Listar todos los clientes.
 export const obtenerClientes = async () => {
     const res = await api.get('clientes/clientes/');
     return res.data;
