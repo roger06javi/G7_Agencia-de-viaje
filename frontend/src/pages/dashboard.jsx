@@ -403,7 +403,7 @@ function TabPaquetes({ paquetes, destinos, reload, flash, loading }) {
 
     const guardar = async (e) => {
         e.preventDefault();
-        if (!destino) { flash('err', 'Selecciona un destino.'); return; }
+        if (!destino) { flash('err', 'Selecciona un destino que deseas.'); return; }
         const data = { nombre_paquete: nombre, precio: parseFloat(precio), duracion_dias: parseInt(dias), destino };
         try {
             if (edit) { await actualizarPaquete(selId, data); flash('ok', 'Paquete actualizado ✓'); }
