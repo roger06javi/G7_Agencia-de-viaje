@@ -416,7 +416,7 @@ function TabPaquetes({ paquetes, destinos, reload, flash, loading }) {
     };
 
     const eliminar = async (id, nombre) => {
-        if (!window.confirm(`¿Eliminar el paquete "${nombre}"?`)) return;
+        if (!window.confirm(`¿Esta seguro que quieres eliminar el paquete "${nombre}"?`)) return;
         try { await eliminarPaquete(id); flash('ok', 'El paquete ha sido eliminado ✓'); reload(); }
         catch { flash('err', 'No se ha podido eliminar el paquete por favor intente de nuevo.'); }
     };
