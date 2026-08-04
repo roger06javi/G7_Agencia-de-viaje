@@ -13,7 +13,7 @@ export const crearReserva = async (data) => {
     return res.data;
 };
 
-// Actualizar reserva existente
+// Actualizar una reserva existente, incluyendo información del cliente y del paquete turístico
 export const actualizarReserva = async (id, data) => {
     const res = await api.put(`reservas/${id}/`, data);
     return res.data;
