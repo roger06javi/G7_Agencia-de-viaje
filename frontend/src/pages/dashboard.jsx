@@ -349,7 +349,7 @@ function TabDestinos({ destinos, reload, flash, loading }) {
                                         <td><span className="badge-cat">{d.pais}</span></td>
                                         <td className="td-desc">{d.descripcion || <span className="no-data">Sin descripción</span>}</td>
                                         <td><div className="action-buttons">
-                                            <button className="btn-action edit" onClick={() => editarM(d)}>✏️ Editar</button>
+                                            <button className="btn-action edit" onClick={() => editarM(d)}>📝 Editar</button>
                                             <button className="btn-action delete" onClick={() => eliminar(d.id, d.nombre_destino)}>🗑️ Eliminar</button>
                                         </div></td>
                                     </tr>
