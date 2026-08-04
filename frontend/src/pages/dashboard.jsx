@@ -250,7 +250,7 @@ function TabClientes({ clientes, reload, flash, loading }) {
                                         <td>{c.telefono || <span className="no-data">—</span>}</td>
                                         <td className="td-desc">{c.correo}</td>
                                         <td><div className="action-buttons">
-                                            <button className="btn-action edit" onClick={() => editarM(c)}>✏️ Editar</button>
+                                            <button className="btn-action edit" onClick={() => editarM(c)}>📝 Editar</button>
                                             <button className="btn-action delete" onClick={() => eliminar(c.id, `${c.nombre} ${c.apellido}`)}>🗑️ Eliminar</button>
                                         </div></td>
                                     </tr>
