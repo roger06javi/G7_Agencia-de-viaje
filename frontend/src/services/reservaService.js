@@ -1,3 +1,4 @@
+// Servicio para manejar las reservas en el frontend, utilizando la API del backend.
 import api from './api';
 
 // Obtener todas las reservas
