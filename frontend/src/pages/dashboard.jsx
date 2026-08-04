@@ -363,7 +363,7 @@ function TabDestinos({ destinos, reload, flash, loading }) {
                 <div className="modal-overlay">
                     <div className="modal-card">
                         <div className="modal-header">
-                            <h3>{edit ? '✏️ Editar Destino' : '➕ Nuevo Destino'}</h3>
+                            <h3>{edit ? '📝 Editar Destino' : '➕ Nuevo Destino'}</h3>
                             <button className="close-btn" onClick={cerrar}>&times;</button>
                         </div>
                         <form onSubmit={guardar} className="modal-form">
