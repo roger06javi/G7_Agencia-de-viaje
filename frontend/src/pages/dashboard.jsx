@@ -28,6 +28,36 @@ function useMsg() {
     return { err, ok, flash, clear };
 }
 
+/* ── Modal de Confirmación ──────────────────────────────── */
+function ConfirmModal({ mensaje, onConfirm, onCancel }) {
+    return (
+        <div className="modal-overlay" onClick={onCancel}>
+            <div className="modal-card confirm-card" onClick={e => e.stopPropagation()}>
+                <div className="confirm-icon">⚠️</div>
+                <h3 className="confirm-title">¿Estás seguro?</h3>
+                <p className="confirm-msg">{mensaje}</p>
+                <div className="confirm-actions">
+                    <button className="btn-secondary" onClick={onCancel}>Cancelar</button>
+                    <button className="btn-danger" onClick={onConfirm}>Sí, eliminar</button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function useConfirm() {
+    const [state, setState] = useState({ open: false, mensaje: '', resolve: null });
+    const confirm = (mensaje) => new Promise(resolve => {
+        setState({ open: true, mensaje, resolve });
+    });
+    const handleConfirm = () => { state.resolve(true);  setState({ open: false, mensaje: '', resolve: null }); };
+    const handleCancel  = () => { state.resolve(false); setState({ open: false, mensaje: '', resolve: null }); };
+    const ConfirmDialog = state.open
+        ? <ConfirmModal mensaje={state.mensaje} onConfirm={handleConfirm} onCancel={handleCancel} />
+        : null;
+    return { confirm, ConfirmDialog };
+}
+
 export default function Dashboard() {
     const navigate = useNavigate();
     const [searchParams, setSearchParams] = useSearchParams();
@@ -43,6 +73,7 @@ export default function Dashboard() {
     const [guias,     setGuias]     = useState([]);
     const [loading,   setLoading]   = useState(false);
     const { err, ok, flash, clear } = useMsg();
+    const { confirm, ConfirmDialog } = useConfirm();
 
     useEffect(() => {
         const token = localStorage.getItem('access');
@@ -77,6 +108,7 @@ export default function Dashboard() {
     const handleLogout = () => { localStorage.clear(); navigate('/'); };
 
     return (
+        <>
         <div className="app-shell">
             <div className={`sidebar-overlay ${sidebarOpen ? 'active' : ''}`} onClick={() => setSidebarOpen(false)}></div>
             <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
@@ -118,15 +150,17 @@ export default function Dashboard() {
                     {err && <div className="banner error"><span className="banner-icon">❌</span>{err}</div>}
 
                     {currentTab === 'inicio'   && <TabInicio clientes={clientes} destinos={destinos} paquetes={paquetes} reservas={reservas} pagos={pagos} guias={guias} switchTab={switchTab} />}
-                    {currentTab === 'clientes' && <TabClientes  clientes={clientes}  reload={cargar} flash={flash} loading={loading} />}
-                    {currentTab === 'destinos' && <TabDestinos  destinos={destinos}  reload={cargar} flash={flash} loading={loading} />}
-                    {currentTab === 'paquetes' && <TabPaquetes  paquetes={paquetes}  destinos={destinos} reload={cargar} flash={flash} loading={loading} />}
-                    {currentTab === 'reservas' && <TabReservas  reservas={reservas}  clientes={clientes} paquetes={paquetes} reload={cargar} flash={flash} loading={loading} />}
-                    {currentTab === 'pagos'    && <TabPagos     pagos={pagos}        reservas={reservas} reload={cargar} flash={flash} loading={loading} />}
-                    {currentTab === 'guias'    && <TabGuias     guias={guias}        destinos={destinos} reload={cargar} flash={flash} loading={loading} />}
+                    {currentTab === 'clientes' && <TabClientes  clientes={clientes}  reload={cargar} flash={flash} loading={loading} confirm={confirm} />}
+                    {currentTab === 'destinos' && <TabDestinos  destinos={destinos}  reload={cargar} flash={flash} loading={loading} confirm={confirm} />}
+                    {currentTab === 'paquetes' && <TabPaquetes  paquetes={paquetes}  destinos={destinos} reload={cargar} flash={flash} loading={loading} confirm={confirm} />}
+                    {currentTab === 'reservas' && <TabReservas  reservas={reservas}  clientes={clientes} paquetes={paquetes} reload={cargar} flash={flash} loading={loading} confirm={confirm} />}
+                    {currentTab === 'pagos'    && <TabPagos     pagos={pagos}        reservas={reservas} reload={cargar} flash={flash} loading={loading} confirm={confirm} />}
+                    {currentTab === 'guias'    && <TabGuias     guias={guias}        destinos={destinos} reload={cargar} flash={flash} loading={loading} confirm={confirm} />}
                 </main>
             </div>
         </div>
+        {ConfirmDialog}
+        </>
     );
 }
 
@@ -190,7 +224,7 @@ function Spinner() { return <div className="loading-spinner">Cargando... ⚡</di
 function Empty({ texto }) { return <div className="empty-state"><p>🗂️ {texto}</p></div>; }
 
 /* ── TAB CLIENTES ───────────────────────────────────────── */
-function TabClientes({ clientes, reload, flash, loading }) {
+function TabClientes({ clientes, reload, flash, loading, confirm }) {
     const [busq, setBusq]       = useState('');
     const [modal, setModal]     = useState(false);
     const [edit, setEdit]       = useState(false);
@@ -220,7 +254,7 @@ function TabClientes({ clientes, reload, flash, loading }) {
     };
 
     const eliminar = async (id, nombre) => {
-        if (!window.confirm(`¿Eliminar al cliente "${nombre}"?`)) return;
+        if (!await confirm(`¿Eliminar al cliente "${nombre}"? Esta acción no se puede deshacer.`)) return;
         try { await eliminarCliente(id); flash('ok', 'Cliente eliminado ✓'); reload(); }
         catch { flash('err', 'No se pudo eliminar el cliente.'); }
     };
@@ -290,7 +324,7 @@ function TabClientes({ clientes, reload, flash, loading }) {
 }
 
 /* ── TAB DESTINOS ───────────────────────────────────────── */
-function TabDestinos({ destinos, reload, flash, loading }) {
+function TabDestinos({ destinos, reload, flash, loading, confirm }) {
     const [busq, setBusq]           = useState('');
     const [modal, setModal]         = useState(false);
     const [edit, setEdit]           = useState(false);
@@ -319,7 +353,7 @@ function TabDestinos({ destinos, reload, flash, loading }) {
     };
 
     const eliminar = async (id, nombre) => {
-        if (!window.confirm(`¿Eliminar el destino "${nombre}"? Se eliminarán sus paquetes y guías.`)) return;
+        if (!await confirm(`¿Eliminar el destino "${nombre}"? Se eliminarán sus paquetes y guías.`)) return;
         try { await eliminarDestino(id); flash('ok', 'Destino eliminado ✓'); reload(); }
         catch { flash('err', 'No se pudo eliminar el destino.'); }
     };
@@ -386,7 +420,7 @@ function TabDestinos({ destinos, reload, flash, loading }) {
 }
 
 /* ── TAB PAQUETES ───────────────────────────────────────── */
-function TabPaquetes({ paquetes, destinos, reload, flash, loading }) {
+function TabPaquetes({ paquetes, destinos, reload, flash, loading, confirm }) {
     const [busq, setBusq]     = useState('');
     const [modal, setModal]   = useState(false);
     const [edit, setEdit]     = useState(false);
@@ -416,9 +450,15 @@ function TabPaquetes({ paquetes, destinos, reload, flash, loading }) {
     };
 
     const eliminar = async (id, nombre) => {
+<<<<<<< Updated upstream
         if (!window.confirm(`¿Esta seguro que quieres eliminar el paquete "${nombre}"?`)) return;
         try { await eliminarPaquete(id); flash('ok', 'El paquete ha sido eliminado ✓'); reload(); }
         catch { flash('err', 'No se ha podido eliminar el paquete por favor intente de nuevo.'); }
+=======
+        if (!await confirm(`¿Eliminar el paquete "${nombre}"?`)) return;
+        try { await eliminarPaquete(id); flash('ok', 'Paquete eliminado ✓'); reload(); }
+        catch { flash('err', 'No se pudo eliminar el paquete.'); }
+>>>>>>> Stashed changes
     };
 
     const filtrados = paquetes.filter(p =>
@@ -487,8 +527,13 @@ function TabPaquetes({ paquetes, destinos, reload, flash, loading }) {
     );
 }
 
+<<<<<<< Updated upstream
 /* ── TAB RESERVAS ───────────────────────────────────────── */ // Revisar el tab de reservas, ya que no se está mostrando correctamente la información de cliente y paquete. Asegurarse de que los datos estén siendo pasados correctamente desde el backend y que los nombres de las propiedades coincidan con los utilizados en el frontend.
 function TabReservas({ reservas, clientes, paquetes, reload, flash, loading }) {
+=======
+/* ── TAB RESERVAS ───────────────────────────────────────── */
+function TabReservas({ reservas, clientes, paquetes, reload, flash, loading, confirm }) {
+>>>>>>> Stashed changes
     const [busq, setBusq]       = useState('');
     const [modal, setModal]     = useState(false);
     const [edit, setEdit]       = useState(false);
@@ -519,9 +564,15 @@ function TabReservas({ reservas, clientes, paquetes, reload, flash, loading }) {
     };
 
     const eliminar = async (id) => {
+<<<<<<< Updated upstream
         if (!window.confirm('¿Esta seguro que quieres eliminar esta reserva?')) return;
         try { await eliminarReserva(id); flash('ok', 'La reserva ha sido eliminada ✓'); reload(); }
         catch { flash('err', 'No se ha podido eliminar la reserva por favor intente de nuevo.'); }
+=======
+        if (!await confirm('¿Eliminar esta reserva? Esta acción no se puede deshacer.')) return;
+        try { await eliminarReserva(id); flash('ok', 'Reserva eliminada ✓'); reload(); }
+        catch { flash('err', 'No se pudo eliminar la reserva.'); }
+>>>>>>> Stashed changes
     };
 
     const pillClass = (e) => e === 'Confirmada' ? 'confirmada' : e === 'Cancelada' ? 'cancelada' : 'pendiente';
@@ -608,7 +659,7 @@ function TabReservas({ reservas, clientes, paquetes, reload, flash, loading }) {
 }
 
 /* ── TAB PAGOS ──────────────────────────────────────────── */
-function TabPagos({ pagos, reservas, reload, flash, loading }) {
+function TabPagos({ pagos, reservas, reload, flash, loading, confirm }) {
     const [busq, setBusq]       = useState('');
     const [modal, setModal]     = useState(false);
     const [edit, setEdit]       = useState(false);
@@ -638,7 +689,11 @@ function TabPagos({ pagos, reservas, reload, flash, loading }) {
     };
 
     const eliminar = async (id) => {
+<<<<<<< Updated upstream
         if (!window.confirm('¿Estas seguro que quieres eliminar este pago?')) return;
+=======
+        if (!await confirm('¿Eliminar este pago? Esta acción no se puede deshacer.')) return;
+>>>>>>> Stashed changes
         try { await eliminarPago(id); flash('ok', 'Pago eliminado ✓'); reload(); }
         catch { flash('err', 'No se ha podido eliminar el pago por favor intente de nuevo.'); }
     };
@@ -718,7 +773,7 @@ function TabPagos({ pagos, reservas, reload, flash, loading }) {
 }
 
 /* ── TAB GUÍAS ──────────────────────────────────────────── */
-function TabGuias({ guias, destinos, reload, flash, loading }) {
+function TabGuias({ guias, destinos, reload, flash, loading, confirm }) {
     const [busq, setBusq]           = useState('');
     const [modal, setModal]         = useState(false);
     const [edit, setEdit]           = useState(false);
@@ -748,9 +803,15 @@ function TabGuias({ guias, destinos, reload, flash, loading }) {
     };
 
     const eliminar = async (id, nombre) => {
+<<<<<<< Updated upstream
         if (!window.confirm(`¿Estas seguro que deseas eliminar al guía "${nombre}"?`)) return;
         try { await eliminarGuia(id); flash('ok', 'El Guía ha sido eliminado ✓'); reload(); }
         catch { flash('err', 'No se ha  podido eliminar el guía por favor intentalo de nuevo.'); }
+=======
+        if (!await confirm(`¿Eliminar al guía "${nombre}"?`)) return;
+        try { await eliminarGuia(id); flash('ok', 'Guía eliminado ✓'); reload(); }
+        catch { flash('err', 'No se pudo eliminar el guía.'); }
+>>>>>>> Stashed changes
     };
 
     const filtrados = guias.filter(g =>
