@@ -450,15 +450,11 @@ function TabPaquetes({ paquetes, destinos, reload, flash, loading, confirm }) {
     };
 
     const eliminar = async (id, nombre) => {
-<<<<<<< Updated upstream
-        if (!window.confirm(`¿Esta seguro que quieres eliminar el paquete "${nombre}"?`)) return;
-        try { await eliminarPaquete(id); flash('ok', 'El paquete ha sido eliminado ✓'); reload(); }
-        catch { flash('err', 'No se ha podido eliminar el paquete por favor intente de nuevo.'); }
-=======
+
         if (!await confirm(`¿Eliminar el paquete "${nombre}"?`)) return;
         try { await eliminarPaquete(id); flash('ok', 'Paquete eliminado ✓'); reload(); }
         catch { flash('err', 'No se pudo eliminar el paquete.'); }
->>>>>>> Stashed changes
+
     };
 
     const filtrados = paquetes.filter(p =>
@@ -527,13 +523,9 @@ function TabPaquetes({ paquetes, destinos, reload, flash, loading, confirm }) {
     );
 }
 
-<<<<<<< Updated upstream
-/* ── TAB RESERVAS ───────────────────────────────────────── */ // Revisar el tab de reservas, ya que no se está mostrando correctamente la información de cliente y paquete. Asegurarse de que los datos estén siendo pasados correctamente desde el backend y que los nombres de las propiedades coincidan con los utilizados en el frontend.
-function TabReservas({ reservas, clientes, paquetes, reload, flash, loading }) {
-=======
+
 /* ── TAB RESERVAS ───────────────────────────────────────── */
 function TabReservas({ reservas, clientes, paquetes, reload, flash, loading, confirm }) {
->>>>>>> Stashed changes
     const [busq, setBusq]       = useState('');
     const [modal, setModal]     = useState(false);
     const [edit, setEdit]       = useState(false);
@@ -564,15 +556,11 @@ function TabReservas({ reservas, clientes, paquetes, reload, flash, loading, con
     };
 
     const eliminar = async (id) => {
-<<<<<<< Updated upstream
-        if (!window.confirm('¿Esta seguro que quieres eliminar esta reserva?')) return;
-        try { await eliminarReserva(id); flash('ok', 'La reserva ha sido eliminada ✓'); reload(); }
-        catch { flash('err', 'No se ha podido eliminar la reserva por favor intente de nuevo.'); }
-=======
+
         if (!await confirm('¿Eliminar esta reserva? Esta acción no se puede deshacer.')) return;
         try { await eliminarReserva(id); flash('ok', 'Reserva eliminada ✓'); reload(); }
         catch { flash('err', 'No se pudo eliminar la reserva.'); }
->>>>>>> Stashed changes
+
     };
 
     const pillClass = (e) => e === 'Confirmada' ? 'confirmada' : e === 'Cancelada' ? 'cancelada' : 'pendiente';
@@ -689,11 +677,8 @@ function TabPagos({ pagos, reservas, reload, flash, loading, confirm }) {
     };
 
     const eliminar = async (id) => {
-<<<<<<< Updated upstream
-        if (!window.confirm('¿Estas seguro que quieres eliminar este pago?')) return;
-=======
+
         if (!await confirm('¿Eliminar este pago? Esta acción no se puede deshacer.')) return;
->>>>>>> Stashed changes
         try { await eliminarPago(id); flash('ok', 'Pago eliminado ✓'); reload(); }
         catch { flash('err', 'No se ha podido eliminar el pago por favor intente de nuevo.'); }
     };
@@ -803,15 +788,9 @@ function TabGuias({ guias, destinos, reload, flash, loading, confirm }) {
     };
 
     const eliminar = async (id, nombre) => {
-<<<<<<< Updated upstream
-        if (!window.confirm(`¿Estas seguro que deseas eliminar al guía "${nombre}"?`)) return;
-        try { await eliminarGuia(id); flash('ok', 'El Guía ha sido eliminado ✓'); reload(); }
-        catch { flash('err', 'No se ha  podido eliminar el guía por favor intentalo de nuevo.'); }
-=======
         if (!await confirm(`¿Eliminar al guía "${nombre}"?`)) return;
         try { await eliminarGuia(id); flash('ok', 'Guía eliminado ✓'); reload(); }
         catch { flash('err', 'No se pudo eliminar el guía.'); }
->>>>>>> Stashed changes
     };
 
     const filtrados = guias.filter(g =>

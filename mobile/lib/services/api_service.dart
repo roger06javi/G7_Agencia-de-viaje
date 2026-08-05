@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'api_config.dart';
 class ApiService {
   // Cambia esta IP por la de tu PC en la red local cuando pruebes en celular físico
-  static const String baseUrl = 'http://172.16.122.141:8000/api';
+  static const String baseUrl = 'http://127.0.0.1:8000/api';
 
   // ── Auth ─────────────────────────────────────────────────
   static Future<bool> login(String username, String password) async {
